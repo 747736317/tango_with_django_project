@@ -10,8 +10,8 @@ from rango.models import Category, Page
 def populate():
 
     python_pages = [
-        {"title": 'Official Python Tutorial',
-         "url": 'http://docs.python.org/2/tutorial/'},
+        {"title": "Official Python Tutorial",
+         "url": "http://docs.python.org/2/tutorial/"},
 
         {"title": "How to Think like a Computer Scientist",
          "url": "http://www.greenteapress.com/thinkpython/"},
@@ -76,7 +76,9 @@ def add_page(cat, title, url, views=0):
 
 
 def add_cat(name, views, likes):
-    c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
+    c = Category.objects.get_or_create(name=name)[0]
+    c.views = views
+    c.likes = likes
     c.save()
     return c
 
