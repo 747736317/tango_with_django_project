@@ -37,6 +37,7 @@ def show_category(request, category_name_slug):
     return render(request, 'rango/category.html', context_dict)
 
 
+@login_required
 def add_category(request):
     form = CategoryForm()
 
@@ -51,6 +52,7 @@ def add_category(request):
     return render(request, 'rango/add_category.html', {'form': form})
 
 
+@login_required
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -91,8 +93,9 @@ def register(request):
 
             if 'picture' in request.FILES:
                 profile.picture = request.FILES['picture']
-                profile.save()
-                registered = True
+
+            profile.save()
+            registered = True
         else:
             print(user_form.errors, profile_form.errors)
     else:
@@ -132,7 +135,7 @@ def some_view(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/register.html', {})
 
 
 
