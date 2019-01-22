@@ -143,5 +143,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-# Restricted user redirect
+# Restricted user will be redirected
 LOGIN_URL = '/rango/login/'
+
+# browser-length sessions expire when the user closes browser
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

@@ -25,6 +25,7 @@ Rango
                     <a href="{% url 'show_category' category.slug %}">
                         {{ category.name }}
                     </a>
+                    {{ category.views }}
                 </li>
             {% endfor %}
         </ul>
@@ -40,6 +41,7 @@ Rango
             {% for page in pages %}
                 <li>
                     <a href="{{ page.url }}">{{ page.title }}</a>
+                    {{ page.views }}
                 </li>
             {% endfor %}
         </ul>
